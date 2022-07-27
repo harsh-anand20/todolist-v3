@@ -43,30 +43,30 @@ app.get("/", function(req,res){
     });
 });
 
-app.get("/:customListName", function(req, res){   // Custom Lists using Express Route Parameters
-    const customListName = _.capitalize(req.params.customListName);
+// app.get("/:customListName", function(req, res){   // Custom Lists using Express Route Parameters
+//     const customListName = _.capitalize(req.params.customListName);
 
-    List.findOne({name: customListName}, function(err, foundList){
-        if(!err) {
-            if(!foundList) {
-                // Create a new List
-                const list = new List({
-                    name: customListName,
-                    items: [defaultItem]
-                });
-                list.save(function(err, result){
-                    if(!err) {
-                        res.redirect("/"+customListName);
-                    }           
-                }); 
+//     List.findOne({name: customListName}, function(err, foundList){
+//         if(!err) {
+//             if(!foundList) {
+//                 // Create a new List
+//                 const list = new List({
+//                     name: customListName,
+//                     items: [defaultItem]
+//                 });
+//                 list.save(function(err, result){
+//                     if(!err) {
+//                         res.redirect("/"+customListName);
+//                     }           
+//                 }); 
 
-            } else {
-                // Show existing List
-                res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
-            }
-        }
-    })
-});
+//             } else {
+//                 // Show existing List
+//                 res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
+//             }
+//         }
+//     })
+// });
 
 app.post("/", function(req, res){
     
@@ -109,6 +109,22 @@ app.post("/delete", function(req, res){
         });
     }
 });
+
+// AUTHENTICATION & SECURITY
+
+app.get("/home", function(req, res){
+    res.render("home");
+});
+
+app.get("/register", function(req, res){
+    res.render("register");
+});
+
+app.get("/login", function(req, res){
+    res.render("login");
+});
+
+
 
 // let port = process.env.PORT;
 // if (port == null || port == "") {

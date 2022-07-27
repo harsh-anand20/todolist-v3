@@ -1,9 +1,19 @@
-<%- include("header"); -%>  <!-- EJS Layouts -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/viper.jpg" sizes="32x32" type="image/png">
+</head>
 
 <body>
 
     <div class="box" id="heading">
-        <h1><%= listTitle %></h1>  <!-- Templating -->
+        <h1><%= listTitle %>'s List</h1>  <!-- Templating -->
     </div>
 
     <div class="box">
@@ -18,13 +28,6 @@
             </form>
         <% }); %> 
 
-        <!-- <% for(var i=0; i < newListItems.length; i++ ) { %>
-            <div class="item">
-                <input type="checkbox">
-                <p><%= newListItems[i].name %></p>
-            </div> 
-        <% } %> -->
-
         <form class="item" action="/" method="post">
             <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
             <button type="submit" name="list" value=<%= listTitle %> >+</button>
@@ -32,4 +35,7 @@
     </div>
 </body>
 
-<%- include("footer"); -%>  <!-- EJS Layouts -->
+<footer>
+    Copyright 2022 Harsh Anand
+</footer>
+</html>
